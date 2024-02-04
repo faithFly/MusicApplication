@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "m1q7Z2/whHMTg7mNaQO0VnOasWfrum8RQuHe5AMB5yFgI+v3aSAdHnT7K+8XEypNSYgJSG2nVodZR617rSraYQ==",
+  "success": true,
+  "projectFilePath": "E:\\faith\\RiderProjects\\MusicApplication\\Music.ConsoleTest\\Music.ConsoleTest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.0.3\\microsoft.identitymodel.jsonwebtokens.7.0.3.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.identitymodel.logging\\7.0.3\\microsoft.identitymodel.logging.7.0.3.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.0.3\\microsoft.identitymodel.tokens.7.0.3.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\snowflake.core\\2.0.0\\snowflake.core.2.0.0.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.0.3\\system.identitymodel.tokens.jwt.7.0.3.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

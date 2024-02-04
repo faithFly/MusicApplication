@@ -1,0 +1,12 @@
+E:\faith\RiderProjects\MusicApplication\Music.Redis\bin\Debug\net6.0\Music.Redis.deps.json
+E:\faith\RiderProjects\MusicApplication\Music.Redis\bin\Debug\net6.0\Music.Redis.dll
+E:\faith\RiderProjects\MusicApplication\Music.Redis\bin\Debug\net6.0\Music.Redis.pdb
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.csproj.AssemblyReference.cache
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.GeneratedMSBuildEditorConfig.editorconfig
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.AssemblyInfoInputs.cache
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.AssemblyInfo.cs
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.csproj.CoreCompileInputs.cache
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.dll
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\refint\Music.Redis.dll
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\Music.Redis.pdb
+E:\faith\RiderProjects\MusicApplication\Music.Redis\obj\Debug\net6.0\ref\Music.Redis.dll

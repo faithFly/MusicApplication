@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "eyAmugWzJBewYNKqXHi0b8H++1SXBVV/4+W+7N3GiQgWXsLHxo/uOoxyP59bMJ8woWX8ZqBKfMuS/u7uXoXSvA==",
+  "success": true,
+  "projectFilePath": "E:\\faith\\RiderProjects\\MusicApplication\\Music.Redis\\Music.Redis.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\stackexchange.redis\\2.7.10\\stackexchange.redis.2.7.10.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
+    "C:\\Users\\faith\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
