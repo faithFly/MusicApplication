@@ -29,5 +29,9 @@ namespace Music.Model.DTO.Music
         /// 歌手名称
         /// </summary>
         public string MusicSingerName { get; set; }
+        /// <summary>
+        /// 歌曲本地地址
+        /// </summary>
+        public string MusicUrl { get; set; }
     }
 }

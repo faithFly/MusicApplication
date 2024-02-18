@@ -1,6 +1,7 @@
 ﻿using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Music.Base;
 using Music.Base.ExpressionHelper;
@@ -18,13 +19,16 @@ namespace MusicService.Music;
 public class MusicInfoService : BaseService<MusicInfo,UpLoadVo>,IMusicInfoService
 {
     private readonly ILogger<MusicInfoService> _logger;
+    private readonly IConfiguration _config;
     public MusicInfoService
     (
         MusicDbContext _dbContext,
         IMapper mapper,
-        ILogger<MusicInfoService> _logger
+        ILogger<MusicInfoService> _logger,
+        IConfiguration _config
         ) : base(_dbContext,mapper)
     {
+        this._config = _config;
         this._logger = _logger;
     }
 
@@ -34,34 +38,23 @@ public class MusicInfoService : BaseService<MusicInfo,UpLoadVo>,IMusicInfoServic
     /// <param name="vo">上传vo</param>
     /// <returns></returns>
     /// <exception cref="UserFriendlyException"></exception>
-    public async ValueTask<bool> upLoadMusicAsync(UpLoadVo vo)
+    public async ValueTask<bool> upDateMusicAsync(UpLoadVo vo)
     {
         try
         {
             var musicObj = await GetFirstOrDefultAsync(x => x.isDel == "0" && x.id == vo.id);
             if (musicObj is not null)
             {
+                //存在更新
                 var mapToEntity = MapToEntity(vo);
-                await AddAsync(mapToEntity);
-                return await _dbContext.SaveChangesAsync() > 0;
+                return await UpdateAsync(mapToEntity);
             }
             else
             {
-                //获取媒体信息
-                if (vo.file == null || vo.file.Length == 0)
-                {
-                    throw new UserFriendlyException(400, "上传文件不能为null");
-                }
-                var filePath = Path.Combine("D://", "upload", vo.file.FileName);
+                //不存在新增
                 var mapToEntity = MapToEntity(vo);
                 mapToEntity.id = SnowflakeIdGenerator.getSnowId();
-                mapToEntity.musicUrl = filePath;
-                await AddAsync(mapToEntity);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    vo.file.CopyTo(stream);
-                }
-                return true;
+                return await AddAsync(mapToEntity);
             }
            
         }
@@ -98,6 +91,15 @@ public class MusicInfoService : BaseService<MusicInfo,UpLoadVo>,IMusicInfoServic
             {
                 throw new UserFriendlyException(400,"Unsupported file format. Please upload mp3 or flac files.");
             }
+            //将音频文件存储到本地 返回url地址
+            var uploadUrl = _config["UploadUrl"].ToString();
+            var filePath = Path.Combine(uploadUrl, audioFile.FileName);
+            // 确保目录存在，如果不存在则创建
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+            using (var fs = new FileStream(filePath, FileMode.Create))
+            {
+                audioFile.CopyTo(fs);
+            }
             // 在这里实现解析音频文件的逻辑，获取更多详细信息
             using (var stream = audioFile.OpenReadStream())
             {
@@ -110,7 +112,8 @@ public class MusicInfoService : BaseService<MusicInfo,UpLoadVo>,IMusicInfoServic
                 audioInfo.MusicName = audioFile.FileName;
                 audioInfo.MusicStar = file.Tag.AlbumArtists.FirstOrDefault() ?? "";
                 audioInfo.MusicSingerName = file.Tag.AlbumArtists.FirstOrDefault() ?? "";
-                audioInfo.MusicStar = "五星";
+                audioInfo.MusicStar = "5";
+                audioInfo.MusicUrl = filePath;
             }
             return audioInfo;
         }
@@ -131,11 +134,9 @@ public class MusicInfoService : BaseService<MusicInfo,UpLoadVo>,IMusicInfoServic
     {
         try
         {
-            Expression<Func<MusicInfo, bool>> query = x => x.isDel == "0";
-            if (!string.IsNullOrEmpty(vo.musicName))
-            {
-                query.And(x => x.musicName.Contains(vo.musicName));
-            }
+            Expression<Func<MusicInfo, bool>> query = x => x.isDel == "0"
+            && (string.IsNullOrEmpty(vo.musicName) || x.musicName.Contains(vo.musicName))
+            && (string.IsNullOrEmpty(vo.singerName) || x.musicSingerName.Contains(vo.singerName));
 
             var list = await GetListByPageOrderBy(query, vo.pageSize, vo.pageIndex, x => x.createTime);
             var count = await GetCountAsync(query);
@@ -148,7 +149,7 @@ public class MusicInfoService : BaseService<MusicInfo,UpLoadVo>,IMusicInfoServic
         catch (Exception e)
         {
             _logger.LogError(e.ToString());
-            throw;
+            throw new UserFriendlyException(400,e.ToString());
         }
        
     }

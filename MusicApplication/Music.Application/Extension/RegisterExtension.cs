@@ -19,8 +19,16 @@ using Newtonsoft.Json.Serialization;
 
 namespace MusicApplication.Extension;
 
+/// <summary>
+/// 依赖注入扩展类
+/// </summary>
 public static class RegisterExtension
 {
+    /// <summary>
+    /// 依赖注入
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
     public static WebApplicationBuilder RegisterDI(this WebApplicationBuilder builder)
     {
         var config = builder.Configuration;
@@ -31,16 +39,27 @@ public static class RegisterExtension
         builder.Services.AddScoped<IMusicInfoService, MusicInfoService>();
         builder.Services.AddScoped<IUserSessionService, UserSessionService>();
         builder.Services.AddSingleton(new JWTHelper(config));
+        builder.Services.AddHttpContextAccessor();
         var redisConnStr = config["Redis:connString"];
         builder.Services.AddSingleton(new RedisService(redisConnStr));
         return builder;
     }
 
+    /// <summary>
+    /// 注入AutoMapper
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
     public static WebApplicationBuilder AddAutoMapper(this WebApplicationBuilder builder)
     {
         builder.Services.AddAutoMapper(typeof(RegisterExtension));
         return builder;
     }
+    /// <summary>
+    /// 注入MVC相关
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
     public static WebApplicationBuilder AddMvcService(this WebApplicationBuilder builder)
     {
         //swagger
@@ -126,7 +145,11 @@ public static class RegisterExtension
         });
         return builder;
     }
-
+    /// <summary>
+    /// 注入DBContext
+    /// </summary>
+    /// <param name="builder"></param>
+    /// <returns></returns>
     public static WebApplicationBuilder AddDBContextService(this WebApplicationBuilder builder)
     {
         string connectionString = builder.Configuration["DefaultConnection"];

@@ -7,7 +7,7 @@ public class BaseEntity
     /// <summary>
     /// 主键id
     /// </summary>
-    public long _id { get; set; }
+    private long _id { get; set; }
     public long id
     {
         get
@@ -35,22 +35,20 @@ public class BaseEntity
             _createTime = value;
         }
     }
-    public string createBy { get; set; }
-    public string _isDel { get; set; }
+    public string? createBy { get; set; }
+    private string _isDel { get; set; }
     public string isDel {
         get
         {
-            return string.IsNullOrEmpty(isDel) ? "0" : isDel;
+            return string.IsNullOrEmpty(_isDel) ? "0" : _isDel;
         }
         set
         {
             _isDel = value;
         }
     }
-    public DateTime updateTime { get; set; }
-    public string updateBy { get; set; }
-    public string arr02 { get; set; }
-    public string arr03 { get; set; }
-    
-    
+    public DateTime? updateTime { get; set; }
+    public string? updateBy { get; set; }
+    public string? arr02 { get; set; }
+    public string? arr03 { get; set; }
 }

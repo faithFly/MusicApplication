@@ -29,6 +29,11 @@ where T : class
         return await _dbContext.SaveChangesAsync() > 0;
     }
 
+    public async ValueTask<bool> UpdateAsync(T t) {
+        _dbContext.Update(t);
+        return await _dbContext.SaveChangesAsync() > 0;
+    }
+
     public async ValueTask<int> GetCountAsync(Expression<Func<T, bool>> whereLambda)
     {
        return await _dbContext.Set<T>().Where(whereLambda).CountAsync();

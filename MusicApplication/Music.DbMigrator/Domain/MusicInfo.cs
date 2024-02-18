@@ -8,10 +8,6 @@ namespace Music.DbMigrator.Domain;
 public class MusicInfo : BaseEntity
 {
     /// <summary>
-    /// 主键id
-    /// </summary>
-    public long id { get; set; }
-    /// <summary>
     /// 歌曲名称
     /// </summary>
     public string musicName { get; set; }

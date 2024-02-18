@@ -37,9 +37,6 @@ public class UpLoadVo
     /// <summary>
     /// 音频地址
     /// </summary>
+    [Required(ErrorMessage = "musicUrl is required.")]
     public string musicUrl { get; set; }
-    /// <summary>
-    /// 音频文件
-    /// </summary>
-    public IFormFile file { get; set; }
 }

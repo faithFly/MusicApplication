@@ -23,18 +23,77 @@
             <param name="userId">用户id</param>
             <returns></returns>
         </member>
-        <member name="M:MusicApplication.Controllers.UpLoad.UploadController.upLoadMusicAsync(Music.Model.VO.UpLoad.UpLoadVo)">
+        <member name="M:MusicApplication.Controllers.Music.MusicController.getMusicListAsync(Music.Model.DTO.Music.GetMusicDto)">
+            <summary>
+            获取音频列表
+            </summary>
+            <param name="vo">获取列表vo</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicApplication.Controllers.Music.MusicController.DeleteMusicAsync(System.Int64)">
+            <summary>
+            删除音频
+            </summary>
+            <param name="musicId">音频主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicApplication.Controllers.Music.MusicController.GetMusicAsync(System.Int64)">
+            <summary>
+            获取音频详情
+            </summary>
+            <param name="musicId">音频主键</param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicApplication.Controllers.Music.MusicController.upDateMusicAsync(Music.Model.VO.UpLoad.UpLoadVo)">
             <summary>
             上传文件到服务器 信息入库
             </summary>
-            <param name="vo"></param>
+            <param name="vo">上传vo</param>
             <returns></returns>
+        </member>
+        <member name="T:MusicApplication.Controllers.UpLoad.UploadController">
+            <summary>
+            文件控制器
+            </summary>
         </member>
         <member name="M:MusicApplication.Controllers.UpLoad.UploadController.getMusicInfoAsync(Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             解析音频 返回音频详细信息
             </summary>
-            <param name="file"></param>
+            <param name="file">文件流</param>
+            <returns></returns>
+        </member>
+        <member name="T:MusicApplication.Extension.RegisterExtension">
+            <summary>
+            依赖注入扩展类
+            </summary>
+        </member>
+        <member name="M:MusicApplication.Extension.RegisterExtension.RegisterDI(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            依赖注入
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicApplication.Extension.RegisterExtension.AddAutoMapper(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            注入AutoMapper
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicApplication.Extension.RegisterExtension.AddMvcService(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            注入MVC相关
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MusicApplication.Extension.RegisterExtension.AddDBContextService(Microsoft.AspNetCore.Builder.WebApplicationBuilder)">
+            <summary>
+            注入DBContext
+            </summary>
+            <param name="builder"></param>
             <returns></returns>
         </member>
         <member name="T:MusicApplication.Filter.ExceptionFilter">

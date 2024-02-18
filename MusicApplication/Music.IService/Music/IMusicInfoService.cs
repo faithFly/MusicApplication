@@ -8,7 +8,7 @@ namespace Music.IService.Music;
 
 public interface IMusicInfoService : IBaseService<MusicInfo,UpLoadVo>
 {
-    ValueTask<bool> upLoadMusicAsync(UpLoadVo vo);
+    ValueTask<bool> upDateMusicAsync(UpLoadVo vo);
     Task<AudioFileInfo> getMusicInfoAsync(IFormFile file);
     Task<ResultDto<MusicInfo>> getMusicListAsync(GetMusicDto vo);
     ValueTask<bool> DeleteMusicAsync(long musicId);
